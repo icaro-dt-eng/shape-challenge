@@ -1,5 +1,6 @@
 import re
 import os
+import rarfile
 import logging
 
 logger=logging.getLogger()

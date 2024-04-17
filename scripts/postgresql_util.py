@@ -30,11 +30,11 @@ class PostgresDbOperations():
         """
         try:
             self.__connection = psycopg2.connect(
-                host=os.environ.get('DB_HOST'), #'postgres', #os.environ.get('DB_HOST'),
-                database=os.environ.get('DB_NAME'), #'shape_challenge',
-                user=os.environ.get('DB_USER'), #'postgres'
-                password=os.environ.get('DB_PASSWORD'), #'postgres'
-                port=os.environ.get('DB_PORT'), #'5432'
+                host=os.environ.get('DB_HOST'),
+                database=os.environ.get('DB_NAME'),
+                user=os.environ.get('DB_USER'),
+                password=os.environ.get('DB_PASSWORD'),
+                port=os.environ.get('DB_PORT'),
             )
 
         except psycopg2.Error as e:

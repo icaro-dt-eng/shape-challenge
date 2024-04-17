@@ -1,6 +1,4 @@
 import re
-import os
-import rarfile
 import logging
 
 logger=logging.getLogger()
@@ -20,41 +18,7 @@ sc = SparkContext(conf=conf)
 # Create a SparkSession
 spark = SparkSession.builder.config(conf=conf).getOrCreate()
 
-
-def unpack_rar(file_path, extract_dir):
-    """
-    Unpacks a .rar file to a specified directory.
-    
-    Args:
-        file_path (str): Path to the .rar file.
-        extract_dir (str): Directory to extract the contents of the .rar file.
-        
-    Returns:
-        bool: True if extraction is successful, False otherwise.
-    """
-    try:
-        # Check if the specified file exists
-        if not os.path.isfile(file_path):
-            print(f"Error: File '{file_path}' not found.")
-            return False
-        
-        # Create the extraction directory if it doesn't exist
-        if not os.path.exists(extract_dir):
-            os.makedirs(extract_dir)
-        
-        # Open the .rar file
-        with rarfile.RarFile(file_path, 'r') as rf:
-            # Extract all contents to the specified directory
-            rf.extractall(path=extract_dir)
-        
-        print(f"Successfully extracted '{file_path}' to '{extract_dir}'.")
-        return True
-    
-    except Exception as e:
-        print(f"Error: Failed to extract '{file_path}'. {e}")
-        return False
-
-
+# Define the parse_failure_log function
 def parse_failure_log(line):
     """
     Parse a line from a failure log and extract relevant information.
@@ -71,7 +35,6 @@ def parse_failure_log(line):
         return (timestamp, int(sensor_id), float(temperature), float(vibration))
     return None
 
-unpack_rar('../data/equipment_failure_sensors.rar', '../data')
 
 # Define schemas for the DataFrames
 schema_eq_failure_sensors = StructType([

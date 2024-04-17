@@ -4,7 +4,10 @@
 
 This project is designed to analyze equipment failure data to uncover patterns and trends. It involves processing raw sensor data, conducting in-depth data analysis, and storing the insights in a PostgreSQL database for further examination and reporting. The following diagram describes the architecture of this project:
 
-![diagram-shape](./diagram.svg)
+
+<p align="center">
+  <img src="/diagram.svg" class="center" alt="image" width="350" height="auto">
+</p>
 
 ## Features
 - Parses failure logs to extract relevant sensor data.

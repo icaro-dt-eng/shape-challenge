@@ -29,7 +29,7 @@ To set up the project environment, follow these steps:
    `cd <project_directory>`
    <br />
 
-3. Ensure that you have Docker installed on your system. If not, you can download and install it from the official Docker website.
+3. Ensure that you have Docker installed on your system. If not, you can download and install it from the [official Docker website](https://docs.docker.com/engine/install/).
     <br />
 
 4. Once Docker is installed, proceed to the usage steps.
@@ -48,6 +48,10 @@ To set up the project environment, follow these steps:
     ```
     Replace your_database_host, your_database_name, your_database_user, your_database_password, and your_database_port with the appropriate values for your database setup.
     <br />
+
+    A .env.example file is available in the root directory.
+    <br />
+
 
 
 3. Run the following command to build and start the containers:

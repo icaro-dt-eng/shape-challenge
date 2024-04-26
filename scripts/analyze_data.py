@@ -27,7 +27,7 @@ query1 = db_operations.select_data('''
 print(f'Total Failures: {query1[0][0]}\n\n')
 
 
-print('2. Total equipment failures that happened in the last 7 days?')
+print('2. Which equipment name had most failures?')
 
 query2 = db_operations.select_data('''
     SELECT e.name, COUNT(f.*) AS failure_count
@@ -43,7 +43,7 @@ print(f'Equipment with the most failures: {query2[0][0]}')
 print(f'Number of failures: {query2[0][1]}\n\n')
 
 
-print('3. Equipment with the most failures in the last 7 days?')
+print('3. Average amount of failures across equipment group, ordered by the number of failures in ascending order?')
 
 query3 = db_operations.select_data('''
     SELECT group_name, AVG(failure_count) AS average_failures
@@ -63,7 +63,7 @@ query3 = [(row[0], int(row[1])) for row in query3]
 spark.createDataFrame(query3, ['group_name', 'average_failures']).show()
 
 
-print('\n4. Equipment with the most failures in the last 7 days?')
+print('\n4. Rank the sensors which present the most number of errors by equipment name in an equipment group.')
 
 query4 = db_operations.select_data('''
     SELECT e.group_name, e.name, s.sensor_id, COUNT(f.*) AS error_count
